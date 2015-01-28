@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MINTimelineViewController.h"
+#import "MINTimelineTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MINTimelineViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MINTimelineTableViewController new]];
     
     [self.window makeKeyAndVisible];
     

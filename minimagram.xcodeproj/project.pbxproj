@@ -20,7 +20,7 @@
 		681D54B21A79A13B0037EB93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		681D54B41A79A13B0037EB93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		681D54B51A79A13B0037EB93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		681D54B71A79A13B0037EB93 /* MINTimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MINTimelineViewController.h; sourceTree = "<group>"; };
+		681D54B71A79A13B0037EB93 /* MINTimelineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MINTimelineTableViewController.h; sourceTree = "<group>"; };
 		681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MINTimelineViewController.m; sourceTree = "<group>"; };
 		681D54BD1A79A13B0037EB93 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		681D54C01A79A13B0037EB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,8 +58,7 @@
 			children = (
 				681D54B41A79A13B0037EB93 /* AppDelegate.h */,
 				681D54B51A79A13B0037EB93 /* AppDelegate.m */,
-				681D54B71A79A13B0037EB93 /* MINTimelineViewController.h */,
-				681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */,
+				681D54D71A79A3840037EB93 /* UI */,
 				681D54BD1A79A13B0037EB93 /* Images.xcassets */,
 				681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */,
 				681D54B01A79A13B0037EB93 /* Supporting Files */,
@@ -74,6 +73,23 @@
 				681D54B21A79A13B0037EB93 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		681D54D71A79A3840037EB93 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				681D54D81A79A3960037EB93 /* Timeline */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		681D54D81A79A3960037EB93 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				681D54B71A79A13B0037EB93 /* MINTimelineTableViewController.h */,
+				681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */,
+			);
+			name = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +296,7 @@
 				681D54D21A79A13B0037EB93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

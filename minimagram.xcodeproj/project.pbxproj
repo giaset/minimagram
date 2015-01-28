@@ -9,22 +9,10 @@
 /* Begin PBXBuildFile section */
 		681D54B31A79A13B0037EB93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B21A79A13B0037EB93 /* main.m */; };
 		681D54B61A79A13B0037EB93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B51A79A13B0037EB93 /* AppDelegate.m */; };
-		681D54B91A79A13B0037EB93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B81A79A13B0037EB93 /* ViewController.m */; };
-		681D54BC1A79A13B0037EB93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681D54BA1A79A13B0037EB93 /* Main.storyboard */; };
+		681D54B91A79A13B0037EB93 /* MINTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */; };
 		681D54BE1A79A13B0037EB93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 681D54BD1A79A13B0037EB93 /* Images.xcassets */; };
 		681D54C11A79A13B0037EB93 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */; };
-		681D54CD1A79A13B0037EB93 /* minimagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54CC1A79A13B0037EB93 /* minimagramTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		681D54C71A79A13B0037EB93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 681D54A51A79A13B0037EB93 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 681D54AC1A79A13B0037EB93;
-			remoteInfo = minimagram;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		681D54AD1A79A13B0037EB93 /* minimagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minimagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,25 +20,14 @@
 		681D54B21A79A13B0037EB93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		681D54B41A79A13B0037EB93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		681D54B51A79A13B0037EB93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		681D54B71A79A13B0037EB93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		681D54B81A79A13B0037EB93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		681D54BB1A79A13B0037EB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		681D54B71A79A13B0037EB93 /* MINTimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MINTimelineViewController.h; sourceTree = "<group>"; };
+		681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MINTimelineViewController.m; sourceTree = "<group>"; };
 		681D54BD1A79A13B0037EB93 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		681D54C01A79A13B0037EB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		681D54C61A79A13B0037EB93 /* minimagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = minimagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		681D54CB1A79A13B0037EB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		681D54CC1A79A13B0037EB93 /* minimagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = minimagramTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		681D54AA1A79A13B0037EB93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		681D54C31A79A13B0037EB93 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				681D54AF1A79A13B0037EB93 /* minimagram */,
-				681D54C91A79A13B0037EB93 /* minimagramTests */,
 				681D54AE1A79A13B0037EB93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				681D54AD1A79A13B0037EB93 /* minimagram.app */,
-				681D54C61A79A13B0037EB93 /* minimagramTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,9 +58,8 @@
 			children = (
 				681D54B41A79A13B0037EB93 /* AppDelegate.h */,
 				681D54B51A79A13B0037EB93 /* AppDelegate.m */,
-				681D54B71A79A13B0037EB93 /* ViewController.h */,
-				681D54B81A79A13B0037EB93 /* ViewController.m */,
-				681D54BA1A79A13B0037EB93 /* Main.storyboard */,
+				681D54B71A79A13B0037EB93 /* MINTimelineViewController.h */,
+				681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */,
 				681D54BD1A79A13B0037EB93 /* Images.xcassets */,
 				681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */,
 				681D54B01A79A13B0037EB93 /* Supporting Files */,
@@ -98,23 +72,6 @@
 			children = (
 				681D54B11A79A13B0037EB93 /* Info.plist */,
 				681D54B21A79A13B0037EB93 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		681D54C91A79A13B0037EB93 /* minimagramTests */ = {
-			isa = PBXGroup;
-			children = (
-				681D54CC1A79A13B0037EB93 /* minimagramTests.m */,
-				681D54CA1A79A13B0037EB93 /* Supporting Files */,
-			);
-			path = minimagramTests;
-			sourceTree = "<group>";
-		};
-		681D54CA1A79A13B0037EB93 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				681D54CB1A79A13B0037EB93 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -139,24 +96,6 @@
 			productReference = 681D54AD1A79A13B0037EB93 /* minimagram.app */;
 			productType = "com.apple.product-type.application";
 		};
-		681D54C51A79A13B0037EB93 /* minimagramTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 681D54D31A79A13B0037EB93 /* Build configuration list for PBXNativeTarget "minimagramTests" */;
-			buildPhases = (
-				681D54C21A79A13B0037EB93 /* Sources */,
-				681D54C31A79A13B0037EB93 /* Frameworks */,
-				681D54C41A79A13B0037EB93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				681D54C81A79A13B0037EB93 /* PBXTargetDependency */,
-			);
-			name = minimagramTests;
-			productName = minimagramTests;
-			productReference = 681D54C61A79A13B0037EB93 /* minimagramTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +107,6 @@
 				TargetAttributes = {
 					681D54AC1A79A13B0037EB93 = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					681D54C51A79A13B0037EB93 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 681D54AC1A79A13B0037EB93;
 					};
 				};
 			};
@@ -189,7 +124,6 @@
 			projectRoot = "";
 			targets = (
 				681D54AC1A79A13B0037EB93 /* minimagram */,
-				681D54C51A79A13B0037EB93 /* minimagramTests */,
 			);
 		};
 /* End PBXProject section */
@@ -199,16 +133,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				681D54BC1A79A13B0037EB93 /* Main.storyboard in Resources */,
 				681D54C11A79A13B0037EB93 /* LaunchScreen.xib in Resources */,
 				681D54BE1A79A13B0037EB93 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		681D54C41A79A13B0037EB93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,39 +145,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				681D54B91A79A13B0037EB93 /* ViewController.m in Sources */,
+				681D54B91A79A13B0037EB93 /* MINTimelineViewController.m in Sources */,
 				681D54B61A79A13B0037EB93 /* AppDelegate.m in Sources */,
 				681D54B31A79A13B0037EB93 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		681D54C21A79A13B0037EB93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				681D54CD1A79A13B0037EB93 /* minimagramTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		681D54C81A79A13B0037EB93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 681D54AC1A79A13B0037EB93 /* minimagram */;
-			targetProxy = 681D54C71A79A13B0037EB93 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		681D54BA1A79A13B0037EB93 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				681D54BB1A79A13B0037EB93 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -359,40 +261,6 @@
 			};
 			name = Release;
 		};
-		681D54D41A79A13B0037EB93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = minimagramTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/minimagram.app/minimagram";
-			};
-			name = Debug;
-		};
-		681D54D51A79A13B0037EB93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = minimagramTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/minimagram.app/minimagram";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -410,14 +278,6 @@
 			buildConfigurations = (
 				681D54D11A79A13B0037EB93 /* Debug */,
 				681D54D21A79A13B0037EB93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		681D54D31A79A13B0037EB93 /* Build configuration list for PBXNativeTarget "minimagramTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				681D54D41A79A13B0037EB93 /* Debug */,
-				681D54D51A79A13B0037EB93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

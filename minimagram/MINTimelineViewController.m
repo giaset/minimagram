@@ -1,22 +1,23 @@
 //
-//  ViewController.m
+//  MINTimelineViewController.m
 //  minimagram
 //
 //  Created by Gianni Settino on 2015-01-28.
 //  Copyright (c) 2015 Milton and Parc. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MINTimelineViewController.h"
 
-@interface ViewController ()
+@interface MINTimelineViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MINTimelineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning {

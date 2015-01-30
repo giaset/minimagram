@@ -11,8 +11,14 @@
 		681D54B61A79A13B0037EB93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B51A79A13B0037EB93 /* AppDelegate.m */; };
 		681D54B91A79A13B0037EB93 /* MINTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */; };
 		681D54BE1A79A13B0037EB93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 681D54BD1A79A13B0037EB93 /* Images.xcassets */; };
-		681D54C11A79A13B0037EB93 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */; };
 		681D54DE1A79DC5A0037EB93 /* MINTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */; };
+		6892F68F1A7B1BFF00507CDE /* MINLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F68E1A7B1BFF00507CDE /* MINLoginViewController.m */; };
+		6892F6921A7B1C1C00507CDE /* MINLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6911A7B1C1C00507CDE /* MINLoginView.m */; };
+		6892F6961A7B204700507CDE /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6892F6951A7B204700507CDE /* Gotham-Black.otf */; };
+		6892F6981A7B205100507CDE /* Gotham-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6892F6971A7B205100507CDE /* Gotham-Book.otf */; };
+		6892F69C1A7B222300507CDE /* UIFont+minimagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F69B1A7B222300507CDE /* UIFont+minimagram.m */; };
+		6892F69F1A7B29C800507CDE /* UIColor+minimagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F69E1A7B29C800507CDE /* UIColor+minimagram.m */; };
+		6892F6A21A7B2DB000507CDE /* GSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6A11A7B2DB000507CDE /* GSButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +33,18 @@
 		681D54C01A79A13B0037EB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		681D54DC1A79DC590037EB93 /* MINTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINTimelineView.h; sourceTree = "<group>"; };
 		681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINTimelineView.m; sourceTree = "<group>"; };
+		6892F68D1A7B1BFF00507CDE /* MINLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINLoginViewController.h; sourceTree = "<group>"; };
+		6892F68E1A7B1BFF00507CDE /* MINLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINLoginViewController.m; sourceTree = "<group>"; };
+		6892F6901A7B1C1C00507CDE /* MINLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINLoginView.h; sourceTree = "<group>"; };
+		6892F6911A7B1C1C00507CDE /* MINLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINLoginView.m; sourceTree = "<group>"; };
+		6892F6951A7B204700507CDE /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
+		6892F6971A7B205100507CDE /* Gotham-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Book.otf"; sourceTree = "<group>"; };
+		6892F69A1A7B222300507CDE /* UIFont+minimagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+minimagram.h"; sourceTree = "<group>"; };
+		6892F69B1A7B222300507CDE /* UIFont+minimagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+minimagram.m"; sourceTree = "<group>"; };
+		6892F69D1A7B29C800507CDE /* UIColor+minimagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+minimagram.h"; sourceTree = "<group>"; };
+		6892F69E1A7B29C800507CDE /* UIColor+minimagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+minimagram.m"; sourceTree = "<group>"; };
+		6892F6A01A7B2DB000507CDE /* GSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSButton.h; sourceTree = "<group>"; };
+		6892F6A11A7B2DB000507CDE /* GSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +80,8 @@
 				681D54B41A79A13B0037EB93 /* AppDelegate.h */,
 				681D54B51A79A13B0037EB93 /* AppDelegate.m */,
 				681D54D71A79A3840037EB93 /* UI */,
-				681D54BD1A79A13B0037EB93 /* Images.xcassets */,
-				681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */,
+				6892F6991A7B21FD00507CDE /* Helpers */,
+				6892F6931A7B200A00507CDE /* Resources */,
 				681D54B01A79A13B0037EB93 /* Supporting Files */,
 			);
 			path = minimagram;
@@ -81,6 +99,7 @@
 		681D54D71A79A3840037EB93 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6892F68C1A7B1BD600507CDE /* Login */,
 				681D54D81A79A3960037EB93 /* Timeline */,
 			);
 			name = UI;
@@ -95,6 +114,49 @@
 				681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */,
 			);
 			name = Timeline;
+			sourceTree = "<group>";
+		};
+		6892F68C1A7B1BD600507CDE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6892F68D1A7B1BFF00507CDE /* MINLoginViewController.h */,
+				6892F68E1A7B1BFF00507CDE /* MINLoginViewController.m */,
+				6892F6901A7B1C1C00507CDE /* MINLoginView.h */,
+				6892F6911A7B1C1C00507CDE /* MINLoginView.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6892F6931A7B200A00507CDE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				681D54BD1A79A13B0037EB93 /* Images.xcassets */,
+				681D54BF1A79A13B0037EB93 /* LaunchScreen.xib */,
+				6892F6941A7B203D00507CDE /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6892F6941A7B203D00507CDE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6892F6971A7B205100507CDE /* Gotham-Book.otf */,
+				6892F6951A7B204700507CDE /* Gotham-Black.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		6892F6991A7B21FD00507CDE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6892F69A1A7B222300507CDE /* UIFont+minimagram.h */,
+				6892F69B1A7B222300507CDE /* UIFont+minimagram.m */,
+				6892F69D1A7B29C800507CDE /* UIColor+minimagram.h */,
+				6892F69E1A7B29C800507CDE /* UIColor+minimagram.m */,
+				6892F6A01A7B2DB000507CDE /* GSButton.h */,
+				6892F6A11A7B2DB000507CDE /* GSButton.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,7 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				681D54C11A79A13B0037EB93 /* LaunchScreen.xib in Resources */,
+				6892F6961A7B204700507CDE /* Gotham-Black.otf in Resources */,
+				6892F6981A7B205100507CDE /* Gotham-Book.otf in Resources */,
 				681D54BE1A79A13B0037EB93 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,8 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6892F69C1A7B222300507CDE /* UIFont+minimagram.m in Sources */,
+				6892F69F1A7B29C800507CDE /* UIColor+minimagram.m in Sources */,
 				681D54B91A79A13B0037EB93 /* MINTimelineViewController.m in Sources */,
 				681D54B61A79A13B0037EB93 /* AppDelegate.m in Sources */,
+				6892F68F1A7B1BFF00507CDE /* MINLoginViewController.m in Sources */,
+				6892F6921A7B1C1C00507CDE /* MINLoginView.m in Sources */,
+				6892F6A21A7B2DB000507CDE /* GSButton.m in Sources */,
 				681D54DE1A79DC5A0037EB93 /* MINTimelineView.m in Sources */,
 				681D54B31A79A13B0037EB93 /* main.m in Sources */,
 			);

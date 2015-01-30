@@ -11,5 +11,7 @@
 @interface MINTimelineTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *asyncImageView;
+@property (nonatomic, strong) UILabel *usernameLabel;
+@property (nonatomic, strong) UILabel *captionLabel;
 
 @end

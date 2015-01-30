@@ -7,6 +7,7 @@
 //
 
 #import "MINWebService.h"
+#import "MINPhoto.h"
 
 @interface MINWebService()
 
@@ -44,9 +45,14 @@
         NSArray *mediaArray = responseDict[@"data"];
         NSMutableArray *returnArray = [NSMutableArray new];
         for (NSDictionary *mediaItem in mediaArray) {
-            //NSLog(@"%@", mediaItem);
-            NSString *imageUrl = mediaItem[@"images"][@"standard_resolution"][@"url"];
-            [returnArray addObject:imageUrl];
+            NSString *url = mediaItem[@"images"][@"standard_resolution"][@"url"];
+            NSString *user = mediaItem[@"user"][@"username"];
+            NSString *caption = @"";
+            if (mediaItem[@"caption"] != [NSNull null]) {
+                caption = mediaItem[@"caption"][@"text"];
+            }
+            MINPhoto *photo = [[MINPhoto alloc] initWithDictionary:@{@"url": url, @"user": user, @"caption": caption}];
+            [returnArray addObject:photo];
         }
         if (completion) {
             completion(nil, returnArray);

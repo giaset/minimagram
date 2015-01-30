@@ -12,11 +12,12 @@
 #import "MINWebService.h"
 #import "UIColor+minimagram.h"
 #import "UIImageView+AFNetworking.h"
+#import "MINPhoto.h"
 
 @interface MINTimelineTableViewController ()
 
 @property (nonatomic, strong) MINTimelineView *view;
-@property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
@@ -28,7 +29,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.images = [NSMutableArray new];
+        self.photos = [NSMutableArray new];
     }
     return self;
 }
@@ -66,7 +67,7 @@
     [[MINWebService sharedInstance] getFeedWithCompletion:^(NSError *error, NSArray *feedItems) {
         [self.refreshControl endRefreshing];
         if (!error) {
-            [self.images addObjectsFromArray:feedItems];
+            [self.photos addObjectsFromArray:feedItems];
             [self.view.tableView reloadData];
         }
     }];
@@ -77,7 +78,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.images.count;
+    return self.photos.count;
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,8 +90,11 @@
      }
      
      // Configure the cell...
+     MINPhoto *photo = [self.photos objectAtIndex:indexPath.row];
      cell.asyncImageView.image = nil; // clear the previous image if the cell is being re-used
-     [cell.asyncImageView setImageWithURL:[NSURL URLWithString:[self.images objectAtIndex:indexPath.row]]];
+     [cell.asyncImageView setImageWithURL:photo.url];
+     cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", photo.user];
+     cell.captionLabel.text = photo.caption;
      
      return cell;
 }
@@ -99,6 +103,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.view.frame.size.width;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.photos.count-3) {
+        
+    }
 }
 
 @end

@@ -39,6 +39,7 @@
 		6892F6DE1A7B4E7B00507CDE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6CD1A7B4E7A00507CDE /* UIWebView+AFNetworking.m */; };
 		6892F6E21A7B4ECC00507CDE /* MINWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6E11A7B4ECB00507CDE /* MINWebService.m */; };
 		6892F6E51A7B54BC00507CDE /* MINTimelineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6E41A7B54BC00507CDE /* MINTimelineTableViewCell.m */; };
+		6892F6EC1A7B772B00507CDE /* MINPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6EB1A7B772B00507CDE /* MINPhoto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,8 @@
 		6892F6E11A7B4ECB00507CDE /* MINWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINWebService.m; sourceTree = "<group>"; };
 		6892F6E31A7B54BC00507CDE /* MINTimelineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINTimelineTableViewCell.h; sourceTree = "<group>"; };
 		6892F6E41A7B54BC00507CDE /* MINTimelineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINTimelineTableViewCell.m; sourceTree = "<group>"; };
+		6892F6EA1A7B772B00507CDE /* MINPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINPhoto.h; sourceTree = "<group>"; };
+		6892F6EB1A7B772B00507CDE /* MINPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINPhoto.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 			children = (
 				681D54B41A79A13B0037EB93 /* AppDelegate.h */,
 				681D54B51A79A13B0037EB93 /* AppDelegate.m */,
+				6892F6E91A7B76F300507CDE /* Model */,
 				681D54D71A79A3840037EB93 /* UI */,
 				6892F6DF1A7B4E8C00507CDE /* Web */,
 				6892F6991A7B21FD00507CDE /* Helpers */,
@@ -303,6 +307,15 @@
 			name = Web;
 			sourceTree = "<group>";
 		};
+		6892F6E91A7B76F300507CDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6892F6EA1A7B772B00507CDE /* MINPhoto.h */,
+				6892F6EB1A7B772B00507CDE /* MINPhoto.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -402,6 +415,7 @@
 				681D54B31A79A13B0037EB93 /* main.m in Sources */,
 				6892F6CE1A7B4E7A00507CDE /* AFHTTPRequestOperation.m in Sources */,
 				6892F6D01A7B4E7A00507CDE /* AFHTTPSessionManager.m in Sources */,
+				6892F6EC1A7B772B00507CDE /* MINPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

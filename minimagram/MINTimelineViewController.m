@@ -19,6 +19,7 @@
 @property (nonatomic, strong) MINTimelineView *view;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) NSString *latestIdFetched;
 
 @end
 
@@ -46,7 +47,7 @@
     self.view.tableView.delegate = self;
     self.view.tableView.dataSource = self;
     
-    [self loadData];
+    [self loadNewData];
 }
 
 /* You can only assign a UIRefreshControl to a UITableViewController, so we create a "fake" one to control our tableView */
@@ -57,18 +58,25 @@
     self.refreshControl = [UIRefreshControl new];
     self.refreshControl.backgroundColor = [UIColor minimagramBlueColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
-    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(loadNewData) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
 }
 
 #pragma mark - Table view data source
 
-- (void)loadData {
-    [[MINWebService sharedInstance] getFeedWithCompletion:^(NSError *error, NSArray *feedItems) {
+- (void)loadNewData {
+    [[MINWebService sharedInstance] getFeedWithMinId:self.latestIdFetched maxId:nil andCompletion:^(NSError *error, NSArray *feedItems) {
         [self.refreshControl endRefreshing];
         if (!error) {
-            [self.photos addObjectsFromArray:feedItems];
-            [self.view.tableView reloadData];
+            self.photos = [[feedItems arrayByAddingObjectsFromArray:self.photos] mutableCopy];
+            
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            for (int i = 0; i < feedItems.count; i++) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
+            
+            [self.view.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            self.latestIdFetched = ((MINPhoto *)[self.photos firstObject]).photoId;
         }
     }];
 }

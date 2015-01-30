@@ -13,6 +13,7 @@
 @property (nonatomic, copy, readonly) NSURL *url;
 @property (nonatomic, copy, readonly) NSString *user;
 @property (nonatomic, copy, readonly) NSString *caption;
+@property (nonatomic, copy, readonly) NSString *photoId;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

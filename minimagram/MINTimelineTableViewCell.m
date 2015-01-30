@@ -43,7 +43,7 @@
         self.captionLabel.textColor = [UIColor whiteColor];
         self.captionLabel.font = [UIFont minimagramRegularFontWithSize:18];
         self.captionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        self.captionLabel.numberOfLines = 0;
+        self.captionLabel.numberOfLines = 4;
         self.captionLabel.textAlignment = NSTextAlignmentCenter;
         self.captionLabel.alpha = 0;
         self.captionLabel.hidden = YES;
@@ -53,6 +53,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    /* TODO: the cell's original selected state overrides this when it goes off screen and then comes back */
     BOOL realSelected = (self.selected && selected) ? NO : selected;
     
     [super setSelected:realSelected animated:animated];

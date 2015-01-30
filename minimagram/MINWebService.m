@@ -31,16 +31,23 @@
     self = [super initWithBaseURL:url];
     if (self) {
         self.token = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
-        /*self.requestSerializer = [AFJSONRequestSerializer serializer];
-        [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        self.responseSerializer.acceptableContentTypes = [self.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];*/
     }
     return self;
 }
 
-- (void)getFeedWithCompletion:(void (^)(NSError *error, NSArray *feedItems))completion {
-    [self GET:@"users/self/feed" parameters:@{@"access_token": self.token} success:^(NSURLSessionDataTask *task, id responseObject) {
+- (void)getFeedWithMinId:(NSString *)minId maxId:(NSString *)maxId andCompletion:(void (^)(NSError *error, NSArray *feedItems))completion {
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    params[@"access_token"] = self.token;
+    
+    if (minId) {
+        params[@"min_id"] = minId;
+    }
+    
+    if (maxId) {
+        params[@"max_id"] = maxId;
+    }
+    
+    [self GET:@"users/self/feed" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         NSArray *mediaArray = responseDict[@"data"];
         NSMutableArray *returnArray = [NSMutableArray new];
@@ -51,7 +58,8 @@
             if (mediaItem[@"caption"] != [NSNull null]) {
                 caption = mediaItem[@"caption"][@"text"];
             }
-            MINPhoto *photo = [[MINPhoto alloc] initWithDictionary:@{@"url": url, @"user": user, @"caption": caption}];
+            NSString *photoId = mediaItem[@"id"];
+            MINPhoto *photo = [[MINPhoto alloc] initWithDictionary:@{@"url": url, @"user": user, @"caption": caption, @"id": photoId}];
             [returnArray addObject:photo];
         }
         if (completion) {

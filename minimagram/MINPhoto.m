@@ -16,6 +16,7 @@
         _url = [NSURL URLWithString:dict[@"url"]];
         _user = [dict[@"user"] copy];
         _caption = [dict[@"caption"] copy];
+        _photoId = [dict[@"id"] copy];
     }
     return self;
 }

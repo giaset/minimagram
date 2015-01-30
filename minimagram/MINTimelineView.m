@@ -23,6 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.tableView = [UITableView new];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:self.tableView];
         
         self.statusBarBackgroundView = [UIView new];

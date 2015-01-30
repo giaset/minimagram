@@ -8,16 +8,27 @@
 
 #import "MINTimelineTableViewController.h"
 #import "MINTimelineView.h"
+#import "MINTimelineTableViewCell.h"
+#import "MINWebService.h"
 
 @interface MINTimelineTableViewController ()
 
 @property (nonatomic, strong) MINTimelineView *view;
+@property (nonatomic, strong) NSMutableArray *images;
 
 @end
 
 @implementation MINTimelineTableViewController
 
 #pragma mark - View controller lifecycle
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.images = [NSMutableArray new];
+    }
+    return self;
+}
 
 - (void)loadView {
     self.view = [[MINTimelineView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -28,7 +39,14 @@
     
     self.view.tableView.delegate = self;
     self.view.tableView.dataSource = self;
-    [self.view.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.view.tableView registerClass:[MINTimelineTableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
+    [[MINWebService sharedInstance] getFeedWithCompletion:^(NSError *error, NSArray *feedItems) {
+        if (!error) {
+            [self.images addObjectsFromArray:feedItems];
+            [self.view.tableView reloadData];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,11 +61,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.images.count;
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+ MINTimelineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
  
  // Configure the cell...
  

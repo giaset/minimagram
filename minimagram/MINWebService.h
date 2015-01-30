@@ -12,4 +12,6 @@
 
 + (instancetype)sharedInstance;
 
+- (void)getFeedWithCompletion:(void (^)(NSError *error, NSArray *feedItems))completion;
+
 @end

@@ -38,6 +38,7 @@
 		6892F6DD1A7B4E7B00507CDE /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6CB1A7B4E7A00507CDE /* UIRefreshControl+AFNetworking.m */; };
 		6892F6DE1A7B4E7B00507CDE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6CD1A7B4E7A00507CDE /* UIWebView+AFNetworking.m */; };
 		6892F6E21A7B4ECC00507CDE /* MINWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6E11A7B4ECB00507CDE /* MINWebService.m */; };
+		6892F6E51A7B54BC00507CDE /* MINTimelineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6E41A7B54BC00507CDE /* MINTimelineTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,8 @@
 		6892F6CD1A7B4E7A00507CDE /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		6892F6E01A7B4ECB00507CDE /* MINWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINWebService.h; sourceTree = "<group>"; };
 		6892F6E11A7B4ECB00507CDE /* MINWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINWebService.m; sourceTree = "<group>"; };
+		6892F6E31A7B54BC00507CDE /* MINTimelineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINTimelineTableViewCell.h; sourceTree = "<group>"; };
+		6892F6E41A7B54BC00507CDE /* MINTimelineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINTimelineTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,8 @@
 				681D54B81A79A13B0037EB93 /* MINTimelineViewController.m */,
 				681D54DC1A79DC590037EB93 /* MINTimelineView.h */,
 				681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */,
+				6892F6E31A7B54BC00507CDE /* MINTimelineTableViewCell.h */,
+				6892F6E41A7B54BC00507CDE /* MINTimelineTableViewCell.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				6892F6A61A7B333400507CDE /* MINWebViewController.m in Sources */,
 				6892F6D41A7B4E7B00507CDE /* AFURLRequestSerialization.m in Sources */,
 				6892F6DD1A7B4E7B00507CDE /* UIRefreshControl+AFNetworking.m in Sources */,
+				6892F6E51A7B54BC00507CDE /* MINTimelineTableViewCell.m in Sources */,
 				6892F6DB1A7B4E7B00507CDE /* UIImageView+AFNetworking.m in Sources */,
 				6892F6D11A7B4E7A00507CDE /* AFNetworkReachabilityManager.m in Sources */,
 				681D54B31A79A13B0037EB93 /* main.m in Sources */,

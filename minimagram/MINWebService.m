@@ -8,6 +8,12 @@
 
 #import "MINWebService.h"
 
+@interface MINWebService()
+
+@property (nonatomic, strong) NSString *token;
+
+@end
+
 @implementation MINWebService
 
 + (instancetype)sharedInstance {
@@ -23,6 +29,7 @@
 - (instancetype)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
+        self.token = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
         /*self.requestSerializer = [AFJSONRequestSerializer serializer];
         [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -31,6 +38,24 @@
     return self;
 }
 
-// GET user/self/feed
+- (void)getFeedWithCompletion:(void (^)(NSError *error, NSArray *feedItems))completion {
+    [self GET:@"users/self/feed" parameters:@{@"access_token": self.token} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *responseDict = (NSDictionary *)responseObject;
+        NSArray *mediaArray = responseDict[@"data"];
+        NSMutableArray *returnArray = [NSMutableArray new];
+        for (NSDictionary *mediaItem in mediaArray) {
+            //NSLog(@"%@", mediaItem);
+            NSString *imageUrl = mediaItem[@"images"][@"standard_resolution"][@"url"];
+            [returnArray addObject:imageUrl];
+        }
+        if (completion) {
+            completion(nil, returnArray);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (completion) {
+            completion(error, nil);
+        }
+    }];
+}
 
 @end

@@ -6,15 +6,13 @@
 //  Copyright (c) 2015 Milton and Parc. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Realm/Realm.h>
 
-@interface MINPhoto : NSObject
+@interface MINPhoto : RLMObject
 
-@property (nonatomic, copy, readonly) NSURL *url;
-@property (nonatomic, copy, readonly) NSString *user;
-@property (nonatomic, copy, readonly) NSString *caption;
-@property (nonatomic, copy, readonly) NSString *photoId;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+@property NSString *url;
+@property NSString *user;
+@property NSString *caption;
+@property NSString *photoId;
 
 @end

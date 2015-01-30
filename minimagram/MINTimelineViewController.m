@@ -116,7 +116,7 @@
      // Configure the cell...
      MINPhoto *photo = [self.photos objectAtIndex:indexPath.row];
      cell.asyncImageView.image = nil; // clear the previous image if the cell is being re-used
-     [cell.asyncImageView setImageWithURL:photo.url];
+     [cell.asyncImageView setImageWithURL:[NSURL URLWithString:photo.url]];
      cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", photo.user];
      cell.captionLabel.text = photo.caption;
      

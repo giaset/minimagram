@@ -10,15 +10,4 @@
 
 @implementation MINPhoto
 
-- (instancetype)initWithDictionary:(NSDictionary *)dict {
-    self = [super init];
-    if (self) {
-        _url = [NSURL URLWithString:dict[@"url"]];
-        _user = [dict[@"user"] copy];
-        _caption = [dict[@"caption"] copy];
-        _photoId = [dict[@"id"] copy];
-    }
-    return self;
-}
-
 @end

@@ -59,7 +59,13 @@
                 caption = mediaItem[@"caption"][@"text"];
             }
             NSString *photoId = mediaItem[@"id"];
-            MINPhoto *photo = [[MINPhoto alloc] initWithDictionary:@{@"url": url, @"user": user, @"caption": caption, @"id": photoId}];
+            
+            MINPhoto *photo = [MINPhoto new];
+            photo.url = url;
+            photo.user = user;
+            photo.caption = caption;
+            photo.photoId = photoId;
+            
             [returnArray addObject:photo];
         }
         if (completion) {

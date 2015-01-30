@@ -10,8 +10,14 @@
 
 @implementation MINTimelineTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        CGFloat imageViewSize = [UIScreen mainScreen].bounds.size.width;
+        self.asyncImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imageViewSize, imageViewSize)];
+        [self addSubview:self.asyncImageView];
+    }
+    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

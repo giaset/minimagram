@@ -10,4 +10,6 @@
 
 @interface MINTimelineTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *asyncImageView;
+
 @end

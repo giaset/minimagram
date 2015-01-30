@@ -11,6 +11,7 @@
 #import "MINTimelineTableViewCell.h"
 #import "MINWebService.h"
 #import "UIColor+minimagram.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface MINTimelineTableViewController ()
 
@@ -43,7 +44,6 @@
     
     self.view.tableView.delegate = self;
     self.view.tableView.dataSource = self;
-    [self.view.tableView registerClass:[MINTimelineTableViewCell class] forCellReuseIdentifier:@"Cell"];
     
     [self loadData];
 }
@@ -58,11 +58,6 @@
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
     tableViewController.refreshControl = self.refreshControl;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -86,11 +81,18 @@
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- MINTimelineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
+     static NSString *cellIdentifier = @"Cell";
+     
+     MINTimelineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+     if (!cell) {
+         cell = [[MINTimelineTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+     }
+     
+     // Configure the cell...
+     cell.asyncImageView.image = nil; // clear the previous image if the cell is being re-used
+     [cell.asyncImageView setImageWithURL:[NSURL URLWithString:[self.images objectAtIndex:indexPath.row]]];
+     
+     return cell;
 }
 
 #pragma mark - Table view delegate

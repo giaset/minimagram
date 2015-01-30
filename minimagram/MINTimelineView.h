@@ -1,5 +1,5 @@
 //
-//  MINTimelineTableViewController.h
+//  MINTimelineView.h
 //  minimagram
 //
 //  Created by Gianni Settino on 2015-01-28.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MINTimelineTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MINTimelineView : UIView
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
-

@@ -42,8 +42,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.tableView.frame = self.frame;
-    self.statusBarBackgroundView.frame = CGRectMake(0, 0, self.frame.size.width, 28);
+    CGFloat statusBarHeight = 28;
+    
+    self.statusBarBackgroundView.frame = CGRectMake(0, 0, self.frame.size.width, statusBarHeight);
+    self.tableView.frame = CGRectMake(0, statusBarHeight, self.frame.size.width, self.frame.size.height-statusBarHeight);
     
     [self.statusBarLabel sizeToFit];
     self.statusBarLabel.center = CGPointMake(self.center.x, self.statusBarBackgroundView.center.y);

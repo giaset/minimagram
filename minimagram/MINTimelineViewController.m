@@ -10,11 +10,13 @@
 #import "MINTimelineView.h"
 #import "MINTimelineTableViewCell.h"
 #import "MINWebService.h"
+#import "UIColor+minimagram.h"
 
 @interface MINTimelineTableViewController ()
 
 @property (nonatomic, strong) MINTimelineView *view;
 @property (nonatomic, strong) NSMutableArray *images;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -37,16 +39,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupPullToRefresh];
+    
     self.view.tableView.delegate = self;
     self.view.tableView.dataSource = self;
     [self.view.tableView registerClass:[MINTimelineTableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    [[MINWebService sharedInstance] getFeedWithCompletion:^(NSError *error, NSArray *feedItems) {
-        if (!error) {
-            [self.images addObjectsFromArray:feedItems];
-            [self.view.tableView reloadData];
-        }
-    }];
+    [self loadData];
+}
+
+/* You can only assign a UIRefreshControl to a UITableViewController, so we create a "fake" one to control our tableView */
+- (void)setupPullToRefresh {
+    UITableViewController *tableViewController = [UITableViewController new];
+    tableViewController.tableView = self.view.tableView;
+    
+    self.refreshControl = [UIRefreshControl new];
+    self.refreshControl.backgroundColor = [UIColor minimagramBlueColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self action:@selector(loadData) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = self.refreshControl;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +66,16 @@
 }
 
 #pragma mark - Table view data source
+
+- (void)loadData {
+    [[MINWebService sharedInstance] getFeedWithCompletion:^(NSError *error, NSArray *feedItems) {
+        [self.refreshControl endRefreshing];
+        if (!error) {
+            [self.images addObjectsFromArray:feedItems];
+            [self.view.tableView reloadData];
+        }
+    }];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

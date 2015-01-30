@@ -81,6 +81,22 @@
     }];
 }
 
+- (void)loadMoreData {
+    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:((MINPhoto *)[self.photos lastObject]).photoId andCompletion:^(NSError *error, NSArray *feedItems) {
+        if (!error) {
+            NSUInteger previousCount = self.photos.count;
+            [self.photos addObjectsFromArray:feedItems];
+            
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            for (int i = 0; i < feedItems.count; i++) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:previousCount+i inSection:0]];
+            }
+            
+            [self.view.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+        }
+    }];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -115,7 +131,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.photos.count-3) {
-        
+        [self loadMoreData];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "MINLoginViewController.h"
 #import "MINLoginView.h"
+#import "MINWebViewController.h"
 
 @interface MINLoginViewController ()
 
@@ -23,11 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.view.loginButton addTarget:self action:@selector(loginButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loginButtonPressed {
+    MINWebViewController *webViewController = [[MINWebViewController alloc] initWithSuccessBlock:^(NSString *token) {
+        NSLog(@"%@", token);
+    }];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:webViewController] animated:YES completion:nil];
 }
 
 @end

@@ -19,6 +19,7 @@
 		6892F69C1A7B222300507CDE /* UIFont+minimagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F69B1A7B222300507CDE /* UIFont+minimagram.m */; };
 		6892F69F1A7B29C800507CDE /* UIColor+minimagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F69E1A7B29C800507CDE /* UIColor+minimagram.m */; };
 		6892F6A21A7B2DB000507CDE /* GSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6A11A7B2DB000507CDE /* GSButton.m */; };
+		6892F6A61A7B333400507CDE /* MINWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6A51A7B333400507CDE /* MINWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		6892F69E1A7B29C800507CDE /* UIColor+minimagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+minimagram.m"; sourceTree = "<group>"; };
 		6892F6A01A7B2DB000507CDE /* GSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSButton.h; sourceTree = "<group>"; };
 		6892F6A11A7B2DB000507CDE /* GSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSButton.m; sourceTree = "<group>"; };
+		6892F6A41A7B333400507CDE /* MINWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINWebViewController.h; sourceTree = "<group>"; };
+		6892F6A51A7B333400507CDE /* MINWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				6892F68C1A7B1BD600507CDE /* Login */,
+				6892F6A31A7B331200507CDE /* WebView */,
 				681D54D81A79A3960037EB93 /* Timeline */,
 			);
 			name = UI;
@@ -157,6 +161,15 @@
 				6892F6A11A7B2DB000507CDE /* GSButton.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		6892F6A31A7B331200507CDE /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				6892F6A41A7B333400507CDE /* MINWebViewController.h */,
+				6892F6A51A7B333400507CDE /* MINWebViewController.m */,
+			);
+			name = WebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +250,7 @@
 				6892F6921A7B1C1C00507CDE /* MINLoginView.m in Sources */,
 				6892F6A21A7B2DB000507CDE /* GSButton.m in Sources */,
 				681D54DE1A79DC5A0037EB93 /* MINTimelineView.m in Sources */,
+				6892F6A61A7B333400507CDE /* MINWebViewController.m in Sources */,
 				681D54B31A79A13B0037EB93 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

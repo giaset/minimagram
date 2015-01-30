@@ -26,7 +26,7 @@
         self.backgroundColor = [UIColor whiteColor];
         
         self.titleLabel = [UILabel new];
-        self.titleLabel.text = @"minimagram";
+        self.titleLabel.text = @"minimagr*m";
         self.titleLabel.font = [UIFont minimagramBoldFontWithSize:44];
         [self addSubview:self.titleLabel];
         

@@ -20,7 +20,6 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (nonatomic, strong) RLMResults *results;
-@property (nonatomic, strong) RLMNotificationToken *notification;
 
 @end
 
@@ -37,11 +36,6 @@
     
     self.results = [[MINPhoto allObjects] sortedResultsUsingProperty:@"photoId" ascending:NO];
     [self.view.tableView reloadData];
-    
-    __weak typeof(self) welf = self;
-    self.notification = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
-        [welf.view.tableView reloadData];
-    }];
     
     [self setupPullToRefresh];
     
@@ -69,12 +63,20 @@
     MINPhoto *newestPhoto = [self.results firstObject];
     [[MINWebService sharedInstance] getFeedWithMinId:newestPhoto.photoId maxId:nil andCompletion:^(NSError *error) {
         [self.refreshControl endRefreshing];
+        
+        if (!error) {
+            [self.view.tableView reloadData];
+        }
     }];
 }
 
 - (void)loadMoreData {
     MINPhoto *lastPhoto = [self.results lastObject];
-    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:lastPhoto.photoId andCompletion:nil];
+    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:lastPhoto.photoId andCompletion:^(NSError *error) {
+        if (!error) {
+            [self.view.tableView reloadData];
+        }
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -98,13 +100,13 @@
      
      if (photo.imageData) {
          cell.asyncImageView.image = [UIImage imageWithData:photo.imageData.image];
-     } /*else {
+     } else {
          __weak MINTimelineTableViewCell *wCell = cell;
          [cell.asyncImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:photo.url]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
              wCell.asyncImageView.image = image;
              [self saveImage:image forPhotoId:photo.photoId];
          } failure:nil];
-     }*/
+     }
      
      cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", photo.user];
      cell.captionLabel.text = photo.caption;
@@ -113,14 +115,16 @@
 }
 
 - (void)saveImage:(UIImage *)image forPhotoId:(NSString *)photoId {
-    NSLog(@"%@", photoId);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        MINPhoto *photo = [[MINPhoto objectsWhere:@"photoId == %@", photoId] firstObject];
+        
         MINImageData *imageData = [MINImageData new];
         imageData.image = UIImagePNGRepresentation(image);
         
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
         [realm addObject:imageData];
+        photo.imageData = imageData;
         [realm commitWriteTransaction];
     });
 }

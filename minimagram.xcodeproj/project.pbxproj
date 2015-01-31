@@ -14,6 +14,7 @@
 		681D54DE1A79DC5A0037EB93 /* MINTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */; };
 		68425E7B1A7C3EF5002767CF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68425E7A1A7C3EF5002767CF /* Realm.framework */; };
 		68425E7D1A7C3F9D002767CF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 68425E7C1A7C3F9D002767CF /* libc++.dylib */; };
+		684595CC1A7D620B006DE676 /* MINImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 684595CB1A7D620B006DE676 /* MINImageData.m */; };
 		6892F68F1A7B1BFF00507CDE /* MINLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F68E1A7B1BFF00507CDE /* MINLoginViewController.m */; };
 		6892F6921A7B1C1C00507CDE /* MINLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6892F6911A7B1C1C00507CDE /* MINLoginView.m */; };
 		6892F6961A7B204700507CDE /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6892F6951A7B204700507CDE /* Gotham-Black.otf */; };
@@ -58,6 +59,8 @@
 		681D54DD1A79DC5A0037EB93 /* MINTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINTimelineView.m; sourceTree = "<group>"; };
 		68425E7A1A7C3EF5002767CF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		68425E7C1A7C3F9D002767CF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		684595CA1A7D620B006DE676 /* MINImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINImageData.h; sourceTree = "<group>"; };
+		684595CB1A7D620B006DE676 /* MINImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINImageData.m; sourceTree = "<group>"; };
 		6892F68D1A7B1BFF00507CDE /* MINLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINLoginViewController.h; sourceTree = "<group>"; };
 		6892F68E1A7B1BFF00507CDE /* MINLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MINLoginViewController.m; sourceTree = "<group>"; };
 		6892F6901A7B1C1C00507CDE /* MINLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINLoginView.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 			children = (
 				6892F6EA1A7B772B00507CDE /* MINPhoto.h */,
 				6892F6EB1A7B772B00507CDE /* MINPhoto.m */,
+				684595CA1A7D620B006DE676 /* MINImageData.h */,
+				684595CB1A7D620B006DE676 /* MINImageData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6892F6D31A7B4E7A00507CDE /* AFURLConnectionOperation.m in Sources */,
+				684595CC1A7D620B006DE676 /* MINImageData.m in Sources */,
 				6892F69C1A7B222300507CDE /* UIFont+minimagram.m in Sources */,
 				6892F6D21A7B4E7A00507CDE /* AFSecurityPolicy.m in Sources */,
 				6892F69F1A7B29C800507CDE /* UIColor+minimagram.m in Sources */,

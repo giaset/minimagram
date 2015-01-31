@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "MINImageData.h"
 
 @interface MINPhoto : RLMObject
 
@@ -14,5 +15,6 @@
 @property NSString *user;
 @property NSString *caption;
 @property NSString *photoId;
+@property MINImageData *imageData;
 
 @end

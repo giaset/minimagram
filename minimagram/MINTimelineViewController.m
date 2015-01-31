@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSString *latestIdFetched;
+@property (nonatomic, strong) dispatch_queue_t realmQueue;
 
 @end
 
@@ -31,6 +32,7 @@
     self = [super init];
     if (self) {
         self.photos = [NSMutableArray new];
+        self.realmQueue = dispatch_queue_create("com.miltonandparc.RealmQueue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
 }
@@ -115,12 +117,33 @@
      
      // Configure the cell...
      MINPhoto *photo = [self.photos objectAtIndex:indexPath.row];
-     cell.asyncImageView.image = nil; // clear the previous image if the cell is being re-used
-     [cell.asyncImageView setImageWithURL:[NSURL URLWithString:photo.url] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+     
+     if (photo.imageData) {
+         cell.asyncImageView.image = [UIImage imageWithData:photo.imageData.image];
+     } else {
+         __weak MINTimelineTableViewCell *wCell = cell;
+         [cell.asyncImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:photo.url]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+             wCell.asyncImageView.image = image;
+             [self saveImage:image forPhoto:photo];
+         } failure:nil];
+     }
+     
      cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", photo.user];
      cell.captionLabel.text = photo.caption;
      
      return cell;
+}
+
+- (void)saveImage:(UIImage *)image forPhoto:(MINPhoto *)photo {
+    dispatch_async(self.realmQueue, ^{
+        MINImageData *imageData = [MINImageData new];
+        imageData.image = UIImagePNGRepresentation(image);
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm addObject:imageData];
+        [realm commitWriteTransaction];
+    });
 }
 
 #pragma mark - Table view delegate

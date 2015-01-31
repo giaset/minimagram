@@ -68,6 +68,12 @@
             
             [returnArray addObject:photo];
         }
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm addObjects:returnArray];
+        [realm commitWriteTransaction];
+        
         if (completion) {
             completion(nil, returnArray);
         }

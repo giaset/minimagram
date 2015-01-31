@@ -51,24 +51,28 @@
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         NSArray *mediaArray = responseDict[@"data"];
         
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        for (NSDictionary *mediaItem in mediaArray) {
-            NSString *url = mediaItem[@"images"][@"standard_resolution"][@"url"];
-            NSString *user = mediaItem[@"user"][@"username"];
-            NSString *caption = @"";
-            if (mediaItem[@"caption"] != [NSNull null]) {
-                caption = mediaItem[@"caption"][@"text"];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            RLMRealm *realm = [RLMRealm defaultRealm];
+            [realm beginWriteTransaction];
+            for (NSDictionary *mediaItem in mediaArray) {
+                NSString *url = mediaItem[@"images"][@"standard_resolution"][@"url"];
+                NSString *user = mediaItem[@"user"][@"username"];
+                NSString *caption = @"";
+                if (mediaItem[@"caption"] != [NSNull null]) {
+                    caption = mediaItem[@"caption"][@"text"];
+                }
+                NSString *photoId = mediaItem[@"id"];
+                
+                [MINPhoto createOrUpdateInRealm:realm withObject:@{@"url": url, @"user": user, @"caption": caption, @"photoId": photoId}];
             }
-            NSString *photoId = mediaItem[@"id"];
+            [realm commitWriteTransaction];
             
-            [MINPhoto createOrUpdateInRealm:realm withObject:@{@"url": url, @"user": user, @"caption": caption, @"photoId": photoId}];
-        }
-        [realm commitWriteTransaction];
-        
-        if (completion) {
-            completion(nil);
-        }
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil);
+                });
+            }
+        });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (completion) {
             completion(error);

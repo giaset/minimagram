@@ -12,6 +12,6 @@
 
 + (instancetype)sharedInstance;
 
-- (void)getFeedWithMinId:(NSString *)minId maxId:(NSString *)maxId andCompletion:(void (^)(NSError *error, NSArray *feedItems))completion;
+- (void)getFeedWithMinId:(NSString *)minId maxId:(NSString *)maxId andCompletion:(void (^)(NSError *error))completion;
 
 @end

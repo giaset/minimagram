@@ -17,10 +17,10 @@
 @interface MINTimelineTableViewController ()
 
 @property (nonatomic, strong) MINTimelineView *view;
-@property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (nonatomic, strong) NSString *latestIdFetched;
-@property (nonatomic, strong) dispatch_queue_t realmQueue;
+
+@property (nonatomic, strong) RLMResults *results;
+@property (nonatomic, strong) RLMNotificationToken *notification;
 
 @end
 
@@ -28,21 +28,20 @@
 
 #pragma mark - View controller lifecycle
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.photos = [NSMutableArray new];
-        self.realmQueue = dispatch_queue_create("com.miltonandparc.RealmQueue", DISPATCH_QUEUE_SERIAL);
-    }
-    return self;
-}
-
 - (void)loadView {
     self.view = [[MINTimelineView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.results = [MINPhoto allObjects];
+    [self.view.tableView reloadData];
+    
+    __weak typeof(self) welf = self;
+    self.notification = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
+        [welf.view.tableView reloadData];
+    }];
     
     [self setupPullToRefresh];
     
@@ -67,36 +66,15 @@
 #pragma mark - Table view data source
 
 - (void)loadNewData {
-    [[MINWebService sharedInstance] getFeedWithMinId:self.latestIdFetched maxId:nil andCompletion:^(NSError *error, NSArray *feedItems) {
+    // min id = self.latestIdFetched
+    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:nil andCompletion:^(NSError *error) {
         [self.refreshControl endRefreshing];
-        if (!error) {
-            self.photos = [[feedItems arrayByAddingObjectsFromArray:self.photos] mutableCopy];
-            
-            NSMutableArray *indexPaths = [NSMutableArray new];
-            for (int i = 0; i < feedItems.count; i++) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            }
-            
-            [self.view.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-            self.latestIdFetched = ((MINPhoto *)[self.photos firstObject]).photoId;
-        }
     }];
 }
 
 - (void)loadMoreData {
-    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:((MINPhoto *)[self.photos lastObject]).photoId andCompletion:^(NSError *error, NSArray *feedItems) {
-        if (!error) {
-            NSUInteger previousCount = self.photos.count;
-            [self.photos addObjectsFromArray:feedItems];
-            
-            NSMutableArray *indexPaths = [NSMutableArray new];
-            for (int i = 0; i < feedItems.count; i++) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:previousCount+i inSection:0]];
-            }
-            
-            [self.view.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        }
-    }];
+    // mad id = ((MINPhoto *)[self.photos lastObject]).photoId
+    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:nil andCompletion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -104,7 +82,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.photos.count;
+    return self.results.count;
 }
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -116,17 +94,17 @@
      }
      
      // Configure the cell...
-     MINPhoto *photo = [self.photos objectAtIndex:indexPath.row];
+     MINPhoto *photo = self.results[indexPath.row];
      
      if (photo.imageData) {
          cell.asyncImageView.image = [UIImage imageWithData:photo.imageData.image];
-     } else {
+     } /*else {
          __weak MINTimelineTableViewCell *wCell = cell;
          [cell.asyncImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:photo.url]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
              wCell.asyncImageView.image = image;
              [self saveImage:image forPhoto:photo];
          } failure:nil];
-     }
+     }*/
      
      cell.usernameLabel.text = [NSString stringWithFormat:@"@%@", photo.user];
      cell.captionLabel.text = photo.caption;
@@ -135,7 +113,8 @@
 }
 
 - (void)saveImage:(UIImage *)image forPhoto:(MINPhoto *)photo {
-    dispatch_async(self.realmQueue, ^{
+    NSLog(@"%@", photo.caption);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         MINImageData *imageData = [MINImageData new];
         imageData.image = UIImagePNGRepresentation(image);
         
@@ -153,7 +132,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == self.photos.count-3) {
+    if (indexPath.row == self.results.count-3) {
         [self loadMoreData];
     }
 }

@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)getFeedWithMinId:(NSString *)minId maxId:(NSString *)maxId andCompletion:(void (^)(NSError *error, NSArray *feedItems))completion {
+- (void)getFeedWithMinId:(NSString *)minId maxId:(NSString *)maxId andCompletion:(void (^)(NSError *error))completion {
     NSMutableDictionary *params = [NSMutableDictionary new];
     params[@"access_token"] = self.token;
     
@@ -75,11 +75,11 @@
         [realm commitWriteTransaction];
         
         if (completion) {
-            completion(nil, returnArray);
+            completion(nil);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (completion) {
-            completion(error, nil);
+            completion(error);
         }
     }];
 }

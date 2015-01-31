@@ -10,4 +10,8 @@
 
 @implementation MINPhoto
 
++ (NSString *)primaryKey {
+    return @"photoId";
+}
+
 @end

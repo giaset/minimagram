@@ -50,7 +50,9 @@
     [self GET:@"users/self/feed" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         NSArray *mediaArray = responseDict[@"data"];
-        NSMutableArray *returnArray = [NSMutableArray new];
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
         for (NSDictionary *mediaItem in mediaArray) {
             NSString *url = mediaItem[@"images"][@"standard_resolution"][@"url"];
             NSString *user = mediaItem[@"user"][@"username"];
@@ -60,18 +62,8 @@
             }
             NSString *photoId = mediaItem[@"id"];
             
-            MINPhoto *photo = [MINPhoto new];
-            photo.url = url;
-            photo.user = user;
-            photo.caption = caption;
-            photo.photoId = photoId;
-            
-            [returnArray addObject:photo];
+            [MINPhoto createOrUpdateInRealm:realm withObject:@{@"url": url, @"user": user, @"caption": caption, @"photoId": photoId}];
         }
-        
-        RLMRealm *realm = [RLMRealm defaultRealm];
-        [realm beginWriteTransaction];
-        [realm addObjects:returnArray];
         [realm commitWriteTransaction];
         
         if (completion) {

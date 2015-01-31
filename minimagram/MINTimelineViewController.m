@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.results = [MINPhoto allObjects];
+    self.results = [[MINPhoto allObjects] sortedResultsUsingProperty:@"photoId" ascending:NO];
     [self.view.tableView reloadData];
     
     __weak typeof(self) welf = self;
@@ -102,7 +102,7 @@
          __weak MINTimelineTableViewCell *wCell = cell;
          [cell.asyncImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:photo.url]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
              wCell.asyncImageView.image = image;
-             [self saveImage:image forPhoto:photo];
+             [self saveImage:image forPhotoId:photo.photoId];
          } failure:nil];
      }*/
      
@@ -112,8 +112,8 @@
      return cell;
 }
 
-- (void)saveImage:(UIImage *)image forPhoto:(MINPhoto *)photo {
-    NSLog(@"%@", photo.caption);
+- (void)saveImage:(UIImage *)image forPhotoId:(NSString *)photoId {
+    NSLog(@"%@", photoId);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         MINImageData *imageData = [MINImageData new];
         imageData.image = UIImagePNGRepresentation(image);

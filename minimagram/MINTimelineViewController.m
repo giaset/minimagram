@@ -66,15 +66,15 @@
 #pragma mark - Table view data source
 
 - (void)loadNewData {
-    // min id = self.latestIdFetched
-    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:nil andCompletion:^(NSError *error) {
+    MINPhoto *newestPhoto = [self.results firstObject];
+    [[MINWebService sharedInstance] getFeedWithMinId:newestPhoto.photoId maxId:nil andCompletion:^(NSError *error) {
         [self.refreshControl endRefreshing];
     }];
 }
 
 - (void)loadMoreData {
-    // mad id = ((MINPhoto *)[self.photos lastObject]).photoId
-    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:nil andCompletion:nil];
+    MINPhoto *lastPhoto = [self.results lastObject];
+    [[MINWebService sharedInstance] getFeedWithMinId:nil maxId:lastPhoto.photoId andCompletion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
